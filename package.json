@@ -5,9 +5,10 @@
   "main": "backend/server.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "node backend/server.js",
-  "build": "npm install --prefix frontend && npm run build --prefix frontend",
+  "dev": "nodemon backend/server.js",
+  "build": "cd frontend && npm install && npm run build",
   "start": "node backend/server.js"
+
   },
   "keywords": [
     "fixxo",
