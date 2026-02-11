@@ -1,0 +1,35 @@
+{
+  "name": "fixxo-backend",
+  "version": "1.0.0",
+  "description": "Fixxo MERN Stack Backend",
+  "main": "backend/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon backend/server.js",
+    "build":"npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "start":"nodemon backend/server.js"
+  },
+  "keywords": [
+    "fixxo",
+    "mern",
+    "backend",
+    "express",
+    "mongodb",
+    "redis"
+  ],
+  "author": "Gopal Das",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.2",
+    "redis": "^4.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
