@@ -13,16 +13,14 @@ const bookingRoutes = require("./src/routes/bookingRoutes");
 const paymentRoutes = require("./src/routes/paymentRoutes");
 const serviceRoutes = require("./src/routes/serviceRoutes");
 
-
-
 const app = express();
-const _dirname =path.resolve();
+const _dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: true,
   credentials: true
 }));
 
@@ -32,11 +30,12 @@ app.use("/api/booking", bookingRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/service", serviceRoutes);
 
-app.use(express.static(path.join(_dirname,"/frontend/dist")))
-app.get("*",(_,res)=>{
-  res.sendFile(path.resolve(_dirname,"frontend","dist","index.html"));
-})
+// frontend serve
+app.use(express.static(path.join(_dirname, "frontend/dist")));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(_dirname, "frontend/dist/index.html"));
+});
 
 connectDB();
 
@@ -44,6 +43,8 @@ RedisClient.connect()
   .then(() => console.log("Redis Ready"))
   .catch((err) => console.log("Redis Connect Error:", err));
 
-app.listen(process.env.PORT, () => {
-  console.log("Server running on port " + process.env.PORT);
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
 });
